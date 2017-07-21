@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 style="text-align: center;"> Blogz! </h1>
+
+    <h1> Welcome!</h1>
+    <a class="btn btn-success" href="/newpost">Add new post</a>
+    <hr>
+
+    {% if blogs|length == 0 %}
+    <p>No blogs yet</p>
+    {% else %}
+    <ul class="list-group">
+      {% for blog in blogs %}
+         <li class="list-group-item"><a href='/blog?id={{blog.id}}'>{{ blog.title }}</a>
+         <p>{{ blog.body | safe }}</p>
+         <p>written by: {{blog.owner.username}}</p>
+
+         </li>
+      {% endfor %}
+    {% endif %}
+    </ul>
+{% endblock %}

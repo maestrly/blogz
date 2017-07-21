@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Register</h1>
+
+<form action='/register' method='POST'>
+  <div class="form-group">
+     <label for="username">Username</label>
+     <input name="username" type="text" value="{{ username }}">
+  </div>
+  <div class="form-group">
+     <label for="password">Password</label>
+     <input name="password" type="password">
+  </div>
+  <div class="form-group">
+     <label for="verify">Verify Password</label>
+     <input name="verify" type="password">
+  </div>
+  <div class="form-group">
+  <p><input type="submit" class="btn btn-primary" value="Sign up"></p>
+  </div>
+</form>
+{% endblock %}

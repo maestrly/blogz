@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<p>New user?<a href="/register"> Sign up</a>!</p>
+<h1>Login to Blogz</h1>
+
+<form action='/login' method='POST'>
+  <div class="form-group">
+     <label for="username">Username</label>
+     <input name="username" type="text" value="{{ username }}" placeholder="Username">
+  </div>
+  <div class="form-group">
+     <label for="password">Password</label>
+     <input name="password" type="password" placeholder="Password">
+  </div>
+  <div class="form-group">
+  <p><input type="submit" class="btn btn-primary" value="Log In"></p>
+  </div>
+</form>
+{% endblock %}

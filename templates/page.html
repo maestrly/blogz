@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+      <div>
+
+        <h1>{{ post.title | safe }}</h1>
+
+        <p>{{ post.body | safe }}</p>
+        <p>written by: <a href="/blog?user={{post.owner.id}}">{{post.owner.username}}</a></p>
+
+      </div>
+
+{% endblock %}
