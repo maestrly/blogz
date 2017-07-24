@@ -135,7 +135,7 @@ def blog():
         blogs = Blog.query.filter_by(owner_id=user_id).all()
         return render_template('selecteduser.html', title="Your Posts", blogs=blogs)
 
-  #if no specific blog  or user selected show all blogs
+  #if no specific blog or user selected show all blogs
   # blogs = Blog.query.all()
 
     owner = User.query.filter_by(username=session['username']).first()
