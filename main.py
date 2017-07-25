@@ -87,6 +87,9 @@ def register():
         elif password != verify:
             flash("Passwords do not match")
 
+        elif password == "" and username == "":
+            flash("Incomplete form, please fill out all fields.")
+
         else:
             existing_user = User.query.filter_by(username=username).first()
 
