@@ -78,7 +78,10 @@ def register():
         session['username'] = username
         session['logged_in'] = True
 
-        if username == "" or username == " ":
+        if password == "" and username == "" and verify == "":
+            flash("Incomplete form, please fill out all fields.")
+
+        elif username == "" or username == " ":
             flash("Please enter a valid username")
 
         elif password == "" or password == " ":
@@ -87,23 +90,20 @@ def register():
         elif password != verify:
             flash("Passwords do not match")
 
-        elif password == "" and username == "":
-            flash("Incomplete form, please fill out all fields.")
-
         else:
             existing_user = User.query.filter_by(username=username).first()
 
-    #if user does not exist
-        if not existing_user:
-            new_user = User(username, password)
-            db.session.add(new_user)
-            db.session.commit()
-            username = session['username']
-            flash("Thank you for registering to Blogz!")
-            return redirect('/blog')
+            #if user does not exist
+            if not existing_user:
+                new_user = User(username, password)
+                db.session.add(new_user)
+                db.session.commit()
+                username = session['username']
+                flash("Thank you for registering to Blogz!")
+                return redirect('/blog')
 
-        else:
-            flash("User already exists. Please log in or create a new account")
+            else:
+                flash("User already exists. Please log in or create a new account")
 
     return render_template('register.html', title="Register")
 
